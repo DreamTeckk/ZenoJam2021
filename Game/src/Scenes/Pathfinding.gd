@@ -6,9 +6,6 @@ var tilemap : TileMap
 var half_sell_size: Vector2
 var used_rect: Rect2
 
-func _physics_process(delta: float) -> void:
-	update_navigation_map()
-
 func create_navigation_map(tilemap: TileMap) -> void:
 	self.tilemap = tilemap
 	half_sell_size = tilemap.cell_size / 2
@@ -17,6 +14,7 @@ func create_navigation_map(tilemap: TileMap) -> void:
 	var tiles = tilemap.get_used_cells()
 	add_traversable_tiles(tiles)
 	connect_traversable_tiles(tiles)
+	update_navigation_map()
 	
 func add_traversable_tiles(tiles: Array) -> void:
 	for tile in tiles:

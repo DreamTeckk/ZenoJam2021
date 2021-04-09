@@ -95,8 +95,725 @@ tile_data = PoolIntArray( -983074, 1, 0, -983073, 1, 0, -983072, 1, 0, -983071, 
 [node name="Ennemy" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
 position = Vector2( 200, -32 )
 
+[node name="Ennemy2" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 304, -8 )
+
+[node name="Ennemy3" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 248, -32 )
+
+[node name="Ennemy4" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 288, -32 )
+
+[node name="Ennemy5" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 272, -96 )
+
+[node name="Ennemy6" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 224, -96 )
+
+[node name="Ennemy7" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 184, -88 )
+
+[node name="Ennemy8" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 216, -72 )
+
+[node name="Ennemy9" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 272, -64 )
+
+[node name="Ennemy10" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 344, -56 )
+
+[node name="Ennemy11" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 376, -64 )
+
+[node name="Ennemy12" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 480, -40 )
+
+[node name="Ennemy13" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 424, -64 )
+
+[node name="Ennemy14" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 464, -64 )
+
+[node name="Ennemy15" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 448, -128 )
+
+[node name="Ennemy16" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 400, -128 )
+
+[node name="Ennemy17" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 360, -120 )
+
+[node name="Ennemy18" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 392, -104 )
+
+[node name="Ennemy19" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 448, -96 )
+
+[node name="Ennemy20" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 520, -88 )
+
+[node name="Ennemy21" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 216, -168 )
+
+[node name="Ennemy22" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 320, -144 )
+
+[node name="Ennemy23" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 264, -168 )
+
+[node name="Ennemy24" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 304, -168 )
+
+[node name="Ennemy25" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 288, -232 )
+
+[node name="Ennemy26" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 240, -232 )
+
+[node name="Ennemy27" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 200, -224 )
+
+[node name="Ennemy28" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 232, -208 )
+
+[node name="Ennemy29" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 288, -200 )
+
+[node name="Ennemy30" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 360, -192 )
+
+[node name="Ennemy31" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 488, 72 )
+
+[node name="Ennemy32" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 592, 96 )
+
+[node name="Ennemy33" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 536, 72 )
+
+[node name="Ennemy34" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 576, 72 )
+
+[node name="Ennemy35" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 560, 8 )
+
+[node name="Ennemy36" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 512, 8 )
+
+[node name="Ennemy37" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 472, 16 )
+
+[node name="Ennemy38" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 504, 32 )
+
+[node name="Ennemy39" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 560, 40 )
+
+[node name="Ennemy40" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 632, 48 )
+
+[node name="Ennemy41" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 600, -104 )
+
+[node name="Ennemy42" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 704, -80 )
+
+[node name="Ennemy43" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 648, -104 )
+
+[node name="Ennemy44" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 688, -104 )
+
+[node name="Ennemy45" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 672, -168 )
+
+[node name="Ennemy46" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 624, -168 )
+
+[node name="Ennemy47" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 584, -160 )
+
+[node name="Ennemy48" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 616, -144 )
+
+[node name="Ennemy49" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 672, -136 )
+
+[node name="Ennemy50" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 744, -128 )
+
+[node name="Ennemy51" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 624, -208 )
+
+[node name="Ennemy52" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 728, -184 )
+
+[node name="Ennemy53" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 672, -208 )
+
+[node name="Ennemy54" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 712, -208 )
+
+[node name="Ennemy55" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 696, -272 )
+
+[node name="Ennemy56" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 648, -272 )
+
+[node name="Ennemy57" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 608, -264 )
+
+[node name="Ennemy58" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 640, -248 )
+
+[node name="Ennemy59" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 696, -240 )
+
+[node name="Ennemy60" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 768, -232 )
+
+[node name="Ennemy61" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 656, 16 )
+
+[node name="Ennemy62" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 760, 40 )
+
+[node name="Ennemy63" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 704, 16 )
+
+[node name="Ennemy64" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 744, 16 )
+
+[node name="Ennemy65" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 728, -48 )
+
+[node name="Ennemy66" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 680, -48 )
+
+[node name="Ennemy67" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 640, -40 )
+
+[node name="Ennemy68" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 672, -24 )
+
+[node name="Ennemy69" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 728, -16 )
+
+[node name="Ennemy70" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 800, -8 )
+
+[node name="Ennemy71" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 664, 144 )
+
+[node name="Ennemy72" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 768, 168 )
+
+[node name="Ennemy73" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 712, 144 )
+
+[node name="Ennemy74" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 752, 144 )
+
+[node name="Ennemy75" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 736, 80 )
+
+[node name="Ennemy76" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 688, 80 )
+
+[node name="Ennemy77" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 648, 88 )
+
+[node name="Ennemy78" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 680, 104 )
+
+[node name="Ennemy79" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 736, 112 )
+
+[node name="Ennemy80" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 808, 120 )
+
+[node name="Ennemy81" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 456, 456 )
+
+[node name="Ennemy82" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 560, 480 )
+
+[node name="Ennemy83" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 504, 456 )
+
+[node name="Ennemy84" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 544, 456 )
+
+[node name="Ennemy85" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 528, 392 )
+
+[node name="Ennemy86" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 480, 392 )
+
+[node name="Ennemy87" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 440, 400 )
+
+[node name="Ennemy88" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 472, 416 )
+
+[node name="Ennemy89" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 528, 424 )
+
+[node name="Ennemy90" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 600, 432 )
+
+[node name="Ennemy91" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 632, 424 )
+
+[node name="Ennemy92" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 736, 448 )
+
+[node name="Ennemy93" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 680, 424 )
+
+[node name="Ennemy94" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 720, 424 )
+
+[node name="Ennemy95" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 704, 360 )
+
+[node name="Ennemy96" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 656, 360 )
+
+[node name="Ennemy97" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 616, 368 )
+
+[node name="Ennemy98" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 648, 384 )
+
+[node name="Ennemy99" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 704, 392 )
+
+[node name="Ennemy100" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 776, 400 )
+
+[node name="Ennemy101" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 472, 320 )
+
+[node name="Ennemy102" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 576, 344 )
+
+[node name="Ennemy103" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 520, 320 )
+
+[node name="Ennemy104" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 560, 320 )
+
+[node name="Ennemy105" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 544, 256 )
+
+[node name="Ennemy106" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 496, 256 )
+
+[node name="Ennemy107" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 456, 264 )
+
+[node name="Ennemy108" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 488, 280 )
+
+[node name="Ennemy109" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 544, 288 )
+
+[node name="Ennemy110" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 616, 296 )
+
+[node name="Ennemy111" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 744, 560 )
+
+[node name="Ennemy112" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 848, 584 )
+
+[node name="Ennemy113" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 792, 560 )
+
+[node name="Ennemy114" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 832, 560 )
+
+[node name="Ennemy115" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 816, 496 )
+
+[node name="Ennemy116" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 768, 496 )
+
+[node name="Ennemy117" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 728, 504 )
+
+[node name="Ennemy118" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 760, 520 )
+
+[node name="Ennemy119" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 816, 528 )
+
+[node name="Ennemy120" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 888, 536 )
+
+[node name="Ennemy121" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 856, 384 )
+
+[node name="Ennemy122" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 960, 408 )
+
+[node name="Ennemy123" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 904, 384 )
+
+[node name="Ennemy124" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 944, 384 )
+
+[node name="Ennemy125" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 928, 320 )
+
+[node name="Ennemy126" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 880, 320 )
+
+[node name="Ennemy127" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 840, 328 )
+
+[node name="Ennemy128" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 872, 344 )
+
+[node name="Ennemy129" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 928, 352 )
+
+[node name="Ennemy130" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1000, 360 )
+
+[node name="Ennemy131" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 880, 280 )
+
+[node name="Ennemy132" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 984, 304 )
+
+[node name="Ennemy133" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 928, 280 )
+
+[node name="Ennemy134" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 968, 280 )
+
+[node name="Ennemy135" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 952, 216 )
+
+[node name="Ennemy136" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 904, 216 )
+
+[node name="Ennemy137" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 864, 224 )
+
+[node name="Ennemy138" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 896, 240 )
+
+[node name="Ennemy139" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 952, 248 )
+
+[node name="Ennemy140" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1024, 256 )
+
+[node name="Ennemy141" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 912, 504 )
+
+[node name="Ennemy142" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1016, 528 )
+
+[node name="Ennemy143" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 960, 504 )
+
+[node name="Ennemy144" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1000, 504 )
+
+[node name="Ennemy145" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 984, 440 )
+
+[node name="Ennemy146" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 936, 440 )
+
+[node name="Ennemy147" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 896, 448 )
+
+[node name="Ennemy148" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 928, 464 )
+
+[node name="Ennemy149" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 984, 472 )
+
+[node name="Ennemy150" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1056, 480 )
+
+[node name="Ennemy151" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 920, 632 )
+
+[node name="Ennemy152" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1024, 656 )
+
+[node name="Ennemy153" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 968, 632 )
+
+[node name="Ennemy154" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1008, 632 )
+
+[node name="Ennemy155" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 992, 568 )
+
+[node name="Ennemy156" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 944, 568 )
+
+[node name="Ennemy157" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 904, 576 )
+
+[node name="Ennemy158" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 936, 592 )
+
+[node name="Ennemy159" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 992, 600 )
+
+[node name="Ennemy160" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 1064, 608 )
+
+[node name="Ennemy161" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -824, 16 )
+
+[node name="Ennemy162" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -720, 40 )
+
+[node name="Ennemy163" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -776, 16 )
+
+[node name="Ennemy164" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -736, 16 )
+
+[node name="Ennemy165" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -752, -48 )
+
+[node name="Ennemy166" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -800, -48 )
+
+[node name="Ennemy167" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -840, -40 )
+
+[node name="Ennemy168" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -808, -24 )
+
+[node name="Ennemy169" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -752, -16 )
+
+[node name="Ennemy170" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -680, -8 )
+
+[node name="Ennemy171" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -648, -16 )
+
+[node name="Ennemy172" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -544, 8 )
+
+[node name="Ennemy173" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -600, -16 )
+
+[node name="Ennemy174" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -560, -16 )
+
+[node name="Ennemy175" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -576, -80 )
+
+[node name="Ennemy176" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -624, -80 )
+
+[node name="Ennemy177" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -664, -72 )
+
+[node name="Ennemy178" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -632, -56 )
+
+[node name="Ennemy179" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -576, -48 )
+
+[node name="Ennemy180" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -504, -40 )
+
+[node name="Ennemy181" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -808, -120 )
+
+[node name="Ennemy182" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -704, -96 )
+
+[node name="Ennemy183" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -760, -120 )
+
+[node name="Ennemy184" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -720, -120 )
+
+[node name="Ennemy185" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -736, -184 )
+
+[node name="Ennemy186" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -784, -184 )
+
+[node name="Ennemy187" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -824, -176 )
+
+[node name="Ennemy188" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -792, -160 )
+
+[node name="Ennemy189" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -736, -152 )
+
+[node name="Ennemy190" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -664, -144 )
+
+[node name="Ennemy191" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -536, 120 )
+
+[node name="Ennemy192" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -432, 144 )
+
+[node name="Ennemy193" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -488, 120 )
+
+[node name="Ennemy194" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -448, 120 )
+
+[node name="Ennemy195" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -464, 56 )
+
+[node name="Ennemy196" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -512, 56 )
+
+[node name="Ennemy197" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -552, 64 )
+
+[node name="Ennemy198" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -520, 80 )
+
+[node name="Ennemy199" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -464, 88 )
+
+[node name="Ennemy200" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -392, 96 )
+
+[node name="Ennemy201" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -424, -56 )
+
+[node name="Ennemy202" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -320, -32 )
+
+[node name="Ennemy203" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -376, -56 )
+
+[node name="Ennemy204" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -336, -56 )
+
+[node name="Ennemy205" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -352, -120 )
+
+[node name="Ennemy206" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -400, -120 )
+
+[node name="Ennemy207" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -440, -112 )
+
+[node name="Ennemy208" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -408, -96 )
+
+[node name="Ennemy209" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -352, -88 )
+
+[node name="Ennemy210" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -280, -80 )
+
+[node name="Ennemy211" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -400, -160 )
+
+[node name="Ennemy212" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -296, -136 )
+
+[node name="Ennemy213" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -352, -160 )
+
+[node name="Ennemy214" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -312, -160 )
+
+[node name="Ennemy215" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -328, -224 )
+
+[node name="Ennemy216" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -376, -224 )
+
+[node name="Ennemy217" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -416, -216 )
+
+[node name="Ennemy218" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -384, -200 )
+
+[node name="Ennemy219" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -328, -192 )
+
+[node name="Ennemy220" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -256, -184 )
+
+[node name="Ennemy221" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -368, 64 )
+
+[node name="Ennemy222" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -264, 88 )
+
+[node name="Ennemy223" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -320, 64 )
+
+[node name="Ennemy224" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -280, 64 )
+
+[node name="Ennemy225" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -296, 0 )
+
+[node name="Ennemy226" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -344, 0 )
+
+[node name="Ennemy227" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -384, 8 )
+
+[node name="Ennemy228" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -352, 24 )
+
+[node name="Ennemy229" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -296, 32 )
+
+[node name="Ennemy230" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -224, 40 )
+
+[node name="Ennemy231" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -360, 192 )
+
+[node name="Ennemy232" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -256, 216 )
+
+[node name="Ennemy233" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -312, 192 )
+
+[node name="Ennemy234" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -272, 192 )
+
+[node name="Ennemy235" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -288, 128 )
+
+[node name="Ennemy236" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -336, 128 )
+
+[node name="Ennemy237" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -376, 136 )
+
+[node name="Ennemy238" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -344, 152 )
+
+[node name="Ennemy239" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -288, 160 )
+
+[node name="Ennemy240" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( -216, 168 )
+
 [node name="EnnemyPathUpdateTimer" type="Timer" parent="."]
 autostart = true
-[connection signal="take_hit" from="Map/YSort/Player" to="HUD" method="_on_Player_take_hit"]
 [connection signal="take_hit" from="Map/YSort/Player" to="Map/YSort/Player" method="_on_Player_take_hit"]
+[connection signal="take_hit" from="Map/YSort/Player" to="HUD" method="_on_Player_take_hit"]
 [connection signal="timeout" from="EnnemyPathUpdateTimer" to="." method="_on_EnnemyPathUpdateTimer_timeout"]

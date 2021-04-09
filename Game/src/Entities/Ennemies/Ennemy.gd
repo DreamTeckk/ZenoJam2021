@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export(float) var speed := 100.0
+export(float) var speed := 150.0
 export(float) var max_health := 50.0
 export(float) var damage := 10.0
 export(float) var attack_cooldown := 1.0 
