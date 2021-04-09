@@ -1,50 +1,66 @@
 extends KinematicBody2D
 
-export var _speed := 100.0
-export var max_health := 50.0
+export(float) var speed := 100.0
+export(float) var max_health := 50.0
+export(float) var damage := 10.0
+export(float) var attack_cooldown := 1.0 
 var health := max_health
+var velocity := Vector2.ZERO
+var can_attack := true
 
 var previous_target := Vector2.ZERO
-var path := PoolVector2Array() setget set_path
+var pathfinding: Pathfinding
+var player: Player
+var path_recalculated := false
+
+onready var collision_box := $CollisionArea/CollisionBox
+onready var attack_cooldown_timer := $AttackCooldown
+
+var on_player := false
 
 func _ready() -> void:
 	set_process(false)
+	attack_cooldown_timer.wait_time = attack_cooldown
 	
 func _process(delta: float) -> void:
-	var move_distance := _speed * delta
-	move(move_distance) 
+	move()
 
-func _update_path(nav2D: Navigation2D, player_position: Vector2) -> void:
-	if previous_target != player_position:
-		previous_target = player_position
-		var new_path := nav2D.get_simple_path(self.global_position, player_position)
-		self.path = new_path
-	
-func move(distance: float) -> void:
-	var start_point := self.position
-	for i in range(path.size()):
-		var distance_to_next := start_point.distance_to(path[0])
-		if distance <= distance_to_next and distance >= 0.0:
-			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
-			break
-		elif path.size() == 1 && distance > distance_to_next:
-			position = path[0]
-			set_process(false)
-			break
-		distance -= distance_to_next
-		start_point = path[0]
-		path.remove(0)
-
-func set_path(value: PoolVector2Array) -> void:
-	path = value
-	if value.size() == 0:
-		return
+func setup(pathfinding: Pathfinding, player: Player) -> void:
+	self.pathfinding = pathfinding
+	self.player = player
 	set_process(true)
+	
+func move() -> void:
+	var path = pathfinding.get_new_path(global_position, player.get_node("Foot").global_position)
+	path_recalculated = false
+	if path.size() > 1:
+		velocity = global_position.direction_to(path[1]) * speed
+		$Sprite.rotation = lerp_angle(rotation, global_position.direction_to(path[1]).angle(), 0.1)
+		move_and_slide(velocity)
 
-
-func _on_ProjectilArea_body_entered(body: Node) -> void:
+func _on_CollisionArea_body_entered(body: Node) -> void:
 	if body.is_in_group("Projectils"):
 		health -= body.damage
+		body.queue_free()
 		$HealthBar.update_health(max_health, health)
 		if health <= 0.0:
 			self.queue_free()
+	if body is Player:
+		on_player = true
+		if can_attack:
+			can_attack = false
+			attack_cooldown_timer.start()
+
+
+func _on_CollisionArea_body_exited(body: Node) -> void:
+	if body is Player:
+		attack_cooldown_timer.stop()
+		on_player = false
+
+
+func _on_AttackCooldown_timeout() -> void:
+	if on_player:
+		attack_cooldown_timer.start()
+		player.get_hit(damage)
+	can_attack = true
+	

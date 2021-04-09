@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Pathfinding",
+"language": "GDScript",
+"path": "res://src/Scenes/Pathfinding.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/Entities/Player/Player.gd"
+} ]
 _global_script_class_icons={
-
+"Pathfinding": "",
+"Player": ""
 }
 
 [application]
@@ -21,8 +32,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=1280
+window/size/height=780
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="viewport"

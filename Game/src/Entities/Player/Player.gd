@@ -1,14 +1,15 @@
 extends KinematicBody2D
+class_name Player
 
 var _velocity := Vector2.ZERO
 var _dead := false
 var _can_shoot := true
 
-export(int) var _max_health := 100
+export(float) var max_health := 100.0
 export(float) var speed := 200.0
-export(int) var health_points := _max_health
+export(float) var health := max_health
 export(String) var world_node_name
-export(float) var reload_time := 0.5
+export(float) var reload_time := 0.1
 
 onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
@@ -33,14 +34,20 @@ func move() -> Vector2:
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
 
-func _get_hit(damage: int): 
-	health_points = clamp(health_points - damage, 0, _max_health)
-	if health_points == 0: 
-		_dead = true
-	emit_signal("take_hit", health_points)
+func get_hit(damage: int): 
+	if !_dead:
+		health = clamp(health - damage, 0, max_health)
+		$HealthBar.update_health(max_health, health)
+		print_debug("Remaining health : " + str(health))
+		if health == 0: 
+			_dead = true
+		emit_signal("take_hit", health)
 	
 func _die():
 	set_physics_process(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
+	print_debug("You died !")
 	emit_signal("died")
 
 func _input(event: InputEvent) -> void:
