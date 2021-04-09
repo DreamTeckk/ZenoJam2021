@@ -8,7 +8,7 @@ export(int) var _max_health := 100
 export(float) var speed := 200.0
 export(int) var health_points := _max_health
 export(String) var world_node_name
-export(float) var reload_time := 0.2
+export(float) var reload_time := 0.5
 
 onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
@@ -89,5 +89,4 @@ func _flip_weapon() -> void:
 		$Weapon.flip_v = false 
 
 func _on_reload_timer_timeout() -> void:
-	$ReloadTimer.stop()
 	_can_shoot = true

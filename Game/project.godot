@@ -86,13 +86,13 @@ fire={
 [layer_names]
 
 2d_render/layer_1="floor"
-2d_physics/layer_1="floor"
+2d_physics/layer_1="Player"
 2d_render/layer_2="walls"
-2d_physics/layer_2="walls"
+2d_physics/layer_2="Player_Projectil"
 2d_render/layer_3="player"
-2d_physics/layer_3="player"
 2d_render/layer_4="ennemies"
-2d_physics/layer_4="ennemies"
+2d_physics/layer_8="Ennemy"
+2d_physics/layer_14="Wall"
 
 [rendering]
 

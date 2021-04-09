@@ -1,6 +1,7 @@
-extends Sprite
+extends KinematicBody2D
 
 var _direction_angle := 0.0
+var damage := 10.0
 export(int) var speed := 400
 
 func _ready() -> void:
@@ -16,3 +17,6 @@ func setup(origin: Vector2, fire_angle: float) -> void:
 	self.global_rotation = _direction_angle
 	self.set_physics_process(true)
 	
+func _on_Area2D_body_entered(body: Node) -> void:
+	if body.name == "MapWalls" or body.name == "Ennemy":
+		self.queue_free()
