@@ -11,12 +11,14 @@ func setup(objectives_manager) -> void:
 	self.objectives_manager = objectives_manager
 	
 func check_mission_completion_with_objective_id(id: int) -> void:
-	pass
+	for mission in missions:
+		if mission.objectives_id_to_complete.has(id):
+			mission.completed_objective(id)
 
 func register_mission() -> void:
 	var new_mission : Mission = mission_ui_scene.instance()
 	$MissionsContainer/VBoxContainer/MissionsList.add_child(new_mission)
-	new_mission.setup("test mission " + str(randi() % 99) + " : ", take_random_objectives(6), objectives_manager)
+	new_mission.setup("test mission " + str(randi() % 99) + " : ", take_random_objectives(3), objectives_manager)
 	missions.append(new_mission)
 		
 func complete_mission(mission_index: int) -> void:

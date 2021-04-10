@@ -72,7 +72,7 @@ tile_data = PoolIntArray( -983074, 0, 0, -983073, 0, 0, -983072, 0, 0, -983071, 
 
 [node name="Objectives" type="Node2D" parent="Map"]
 script = ExtResource( 7 )
-max_objectives = 10
+max_objectives = 2
 max_objectives_per_type = 2
 objective_scene_path = "res://src/Objectives/Objective.tscn"
 
@@ -80,66 +80,6 @@ objective_scene_path = "res://src/Objectives/Objective.tscn"
 position = Vector2( 16, 96 )
 script = ExtResource( 8 )
 on_wall = true
-
-[node name="ObjectiveSpawnPoint2" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint4" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint5" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint6" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint7" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint8" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint9" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint10" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint11" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
-
-[node name="ObjectiveSpawnPoint12" type="Node2D" parent="Map/Objectives"]
-position = Vector2( -96, -16 )
-script = ExtResource( 8 )
-on_wall = true
-orientation = 1
 
 [node name="ObjectiveSpawnPoint13" type="Node2D" parent="Map/Objectives"]
 position = Vector2( -96, -16 )
@@ -176,6 +116,7 @@ tile_data = PoolIntArray( -983074, 1, 0, -983073, 1, 0, -983072, 1, 0, -983071, 
 position = Vector2( 8, 8 )
 
 [node name="Ennemy" parent="Map/YSort/Ennemies" instance=ExtResource( 5 )]
+position = Vector2( 160, -8 )
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 [connection signal="interact" from="Map/YSort/Player" to="." method="_on_Player_interact"]

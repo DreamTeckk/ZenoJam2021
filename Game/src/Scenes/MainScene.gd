@@ -17,4 +17,4 @@ func _ready() -> void:
 	mission_manager.register_mission()
 
 func _on_Player_interact(objective_id: int) -> void:
-	print_debug(objective_id)
+	mission_manager.check_mission_completion_with_objective_id(objective_id)

@@ -32,7 +32,6 @@ func setup(id: int, on_wall: bool, orientation: int, objective) -> void:
 
 func _on_ActivationArea_body_entered(body: Node) -> void:
 	if body.name == "Player":
-		print_debug("entered")
 		activable = true
 		$DetectionRing.modulate.a = 1
 		body._interactable = self
