@@ -1,0 +1,31 @@
+[gd_scene format=2]
+
+[node name="SignleMissionObjective" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1136.0
+margin_bottom = -696.0
+rect_min_size = Vector2( 0, 24 )
+rect_pivot_offset = Vector2( -72, -32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 16.0
+margin_right = 40.0
+margin_bottom = 24.0
+disabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 5.0
+margin_right = 139.0
+margin_bottom = 19.0
+text = "ceci est un test"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -4,9 +4,10 @@ class_name Player
 var _velocity := Vector2.ZERO
 var _dead := false
 var _can_shoot := true
+var _interactable : Objective = null
 
 export(float) var max_health := 100.0
-export(float) var speed := 200.0
+export(float) var speed := 300.0
 export(float) var health := max_health
 export(String) var world_node_name
 export(float) var reload_time := 0.1
@@ -15,6 +16,7 @@ onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
 signal take_hit
 signal died
+signal interact
 
 func _ready() -> void:
 	$ReloadTimer.connect("timeout", self, "_on_reload_timer_timeout")	
@@ -37,11 +39,10 @@ func move() -> Vector2:
 func get_hit(damage: int): 
 	if !_dead:
 		health = clamp(health - damage, 0, max_health)
-		$HealthBar.update_health(max_health, health)
 		print_debug("Remaining health : " + str(health))
 		if health == 0: 
 			_dead = true
-		emit_signal("take_hit", health)
+		emit_signal("take_hit", max_health, health)
 	
 func _die():
 	set_physics_process(false)
@@ -58,7 +59,12 @@ func _input(event: InputEvent) -> void:
 	if direction_aimed != Vector2.ZERO:
 		$Weapon.rotation = direction_aimed.angle()
 		_flip_weapon()
-		
+	
+	# Objectiev interaction
+	if event.is_action_pressed("interacte"): 
+		if _interactable != null:
+			emit_signal("interact", _interactable.objective_id)
+			
 func _fire() -> void:
 	_can_shoot = false
 	

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Missions/MissionsManager.gd" type="Script" id=1]
+
+[node name="Missions" type="Control"]
+margin_right = 232.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionsContainer" type="PanelContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_right = 256.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MissionsContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 249.0
+margin_bottom = 25.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MissionsContainer/VBoxContainer"]
+margin_right = 242.0
+margin_bottom = 14.0
+text = "Missions (99/99) :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionsList" type="VBoxContainer" parent="MissionsContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 242.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

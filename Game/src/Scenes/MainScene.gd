@@ -1,9 +1,10 @@
-extends Node2D
+extends Node
 
-onready var _thread := Thread.new()
 onready var ground := $Map/Ground
 onready var pathfinding := $Map/Pathfinding
 onready var player := $Map/YSort/Player
+onready var mission_manager := $HUD/Interface/Missions
+onready var objective_manager := $Map/Objectives
 
 func _ready() -> void:
 	
@@ -11,8 +12,9 @@ func _ready() -> void:
 	print_debug($Map/YSort/Ennemies.get_children().size())
 	for ennemy in $Map/YSort/Ennemies.get_children():
 		ennemy.setup(pathfinding, player)
+		
+	mission_manager.setup(objective_manager)
+	mission_manager.register_mission()
 
-func _on_EnnemyPathUpdateTimer_timeout() -> void:
-	for ennemy in $Map/YSort/Ennemies.get_children():
-#		ennemy.pathfinding.update_navigation_map()
-		pass
+func _on_Player_interact(objective_id: int) -> void:
+	print_debug(objective_id)
