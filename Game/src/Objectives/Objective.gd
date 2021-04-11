@@ -13,11 +13,6 @@ var gorup_color: Color
 var activable := false
 var is_part_of_mission := false setget set_is_part_of_mission
 
-func _draw() -> void:
-	if is_part_of_mission:
-		draw_circle(Vector2.ZERO, $ActivationArea/CollisionShape2D.shape.radius, Color8(255,0,0,128 if activable else 32))
-	
-
 func setup(id: int, on_wall: bool, orientation: int, objective) -> void:
 	self.on_wall = on_wall
 	self.orientation = orientation
@@ -28,6 +23,7 @@ func setup(id: int, on_wall: bool, orientation: int, objective) -> void:
 	self.objective_has_minigame = objective.get("Has_minigame")
 	self.objective_scene_path = objective.get("Scene_path")
 	set_is_part_of_mission(false)
+	$AnimationPlayer.play("Objective_Light_Wave")
 #
 #	$DetectionRing.modulate.a = 0.2
 	if orientation == 1: 
@@ -43,7 +39,6 @@ func _on_ActivationArea_body_entered(body: Node) -> void:
 		activable = true
 #		$DetectionRing.modulate.a = 1
 		body._interactable = self
-		update()
 
 
 func _on_ActivationArea_body_exited(body: Node) -> void:
@@ -51,9 +46,11 @@ func _on_ActivationArea_body_exited(body: Node) -> void:
 		activable = false
 #		$DetectionRing.modulate.a = 0.2
 		body._interactable = null
-		update()
 		
 func set_is_part_of_mission(value: bool) -> void:
 	is_part_of_mission = value
-	update()
+	if is_part_of_mission:
+		$Light2D.show()
+	else:
+		$Light2D.hide()
 

@@ -15,8 +15,9 @@ func setup(objectives_manager) -> void:
 	
 func check_mission_completion_with_objective_id(id: int) -> void:
 	for mission in missions_pool:
-		if !mission.completed and mission.objectives_id_to_complete.has(id):
+		if !mission.completed and mission.objectives_id_to_complete.has(id) and not mission.objectives_id_completed.has(id):
 			mission.completed_objective(id)
+			objectives_manager.interact_success()
 			if mission.objectives_id_completed.size() >= mission.objectives_id_to_complete.size():
 				missions_completed += 1
 				mission_pool_completed += 1
@@ -24,9 +25,12 @@ func check_mission_completion_with_objective_id(id: int) -> void:
 					complete_pool()
 
 func register_mission(obj_nbr: int) -> Mission:
+	var new_objectives = take_random_objectives(obj_nbr)
+	if new_objectives.size() <= 0:
+		return null 
 	var new_mission : Mission = mission_ui_scene.instance()
 	$MissionsContainer/VBoxContainer/MissionsList.add_child(new_mission)
-	new_mission.setup("test mission " + str(randi() % 99) + " : ", take_random_objectives(obj_nbr), objectives_manager)
+	new_mission.setup("test mission " + str(randi() % 99) + " : ", new_objectives, objectives_manager)
 	return new_mission
 	
 func create_pool(min_nbr: int, max_nbr: int, obj_nbr: int) -> void:
@@ -38,12 +42,17 @@ func create_pool(min_nbr: int, max_nbr: int, obj_nbr: int) -> void:
 		nbr = randi() % max_nbr + min_nbr
 	missions_pool = []
 	$MissionsContainer.rect_size.y = 0
+	var missions_added = 0
 	for i in range(nbr):
-		missions_pool.append(register_mission(obj_nbr))
+		var new_mission = register_mission(obj_nbr)
+		if new_mission == null:
+			return
+		missions_added += 1
+		missions_pool.append(new_mission)
 #		print_debug($MissionsContainer/VBoxContainer/MissionsList.get_child(i).rect_size.y)
 		$MissionsContainer.rect_size.y += $MissionsContainer/VBoxContainer/MissionsList.get_child(i).rect_size.y
-	missions_total += nbr
-	mission_to_complete = nbr
+	missions_total += missions_added
+	mission_to_complete = missions_added
 	mission_pool_completed = 0
 	$MissionsContainer/VBoxContainer/Label.text = "Missions (" + str(missions_completed) + "/" + str(missions_total) + ") :"
 	

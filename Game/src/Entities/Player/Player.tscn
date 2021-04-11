@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Player.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Player_Weapon.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/Gun_Shoot_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/lights/32xlight.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/Path_indicator.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "Musle_Flash"
 length = 0.1
 step = 0.02
@@ -23,14 +24,13 @@ tracks/0/keys = {
 "values": [ 0.0, 10.0, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12.0467, 4.20392 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 12.0161, 12.0456 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 0.36
 loop = true
 step = 0.06
@@ -47,8 +47,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle"
+[sub_resource type="Animation" id=5]
 length = 0.5
 loop = true
 step = 0.06
@@ -99,11 +98,11 @@ color = Color( 0.584314, 0.870588, 0.862745, 1 )
 energy = 0.0
 
 [node name="MusleFlashAnimation" type="AnimationPlayer" parent="Weapon"]
-anims/Musle_Flash = SubResource( 5 )
+anims/Musle_Flash = SubResource( 1 )
 
 [node name="Foot" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.7513 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="BodyArea" type="Area2D" parent="."]
 position = Vector2( 0, -2.31508 )
@@ -113,14 +112,14 @@ collision_mask = 128
 
 [node name="BodyCollision" type="CollisionShape2D" parent="BodyArea"]
 position = Vector2( -5.86915e-06, 2.31508 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Run = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/Run = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -135,3 +134,8 @@ energy = 2.0
 shadow_enabled = true
 shadow_buffer_size = 512
 shadow_item_cull_mask = -2147483645
+
+[node name="PathIndicator" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 70, 0 )

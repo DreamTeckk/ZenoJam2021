@@ -6,6 +6,9 @@ var _dead := false
 var _can_shoot := true
 var _interactable : Objective = null
 var _weapon_direction = Weapon_Direction.EAST
+var pathfinding : Pathfinding
+var mission_manager
+var objective_manager
 
 enum Weapon_Direction {WEST, EAST}
 
@@ -22,8 +25,22 @@ signal died
 signal interact
 
 func _ready() -> void:
-	$ReloadTimer.connect("timeout", self, "_on_reload_timer_timeout")	
+	$ReloadTimer.connect("timeout", self, "_on_reload_timer_timeout")
+	set_physics_process(false)
+	set_process(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
 
+func setup(pathfinding: Pathfinding, mission_manager, objective_manager) -> void:
+	self.pathfinding = pathfinding
+	self.mission_manager = mission_manager
+	self.objective_manager = objective_manager
+	
+	set_physics_process(true)
+	set_process(true)
+	set_process_input(true)
+	set_process_unhandled_input(true)
+	
 func _physics_process(delta: float) -> void:
 	if !_dead:
 		_velocity = self.move_and_slide(move().normalized() * speed)
@@ -36,7 +53,32 @@ func _physics_process(delta: float) -> void:
 		animate()
 	else:
 		_die()
+
+func _process(delta: float) -> void:
+	update_arrow_direction()
+
+func update_arrow_direction() -> void:
+#	var path = pathfinding.get_new_path(global_position, get_nearest_objective())
+#	if path.size() > 1:
+#		$PathIndicator.look_at(path[1])
+	$PathIndicator.look_at(get_nearest_objective())	
 	
+func get_nearest_objective() -> Vector2:
+	var missions = mission_manager.missions_pool
+	var nearest_distance = INF
+	var nearest_objective_pos: Vector2
+	for mission in missions:
+		for objective_id in mission.objectives_id_to_complete:
+			if mission.objectives_id_completed.has(objective_id):
+				continue
+			var objective = objective_manager.get_objective_by_id(objective_id)
+			var distance = global_position.distance_to(objective.global_position)
+			if distance < nearest_distance:
+				nearest_distance = distance
+				nearest_objective_pos = objective.global_position 
+			
+	return nearest_objective_pos
+
 func move() -> Vector2: 
 	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
@@ -121,3 +163,13 @@ func _flip_weapon() -> void:
 
 func _on_reload_timer_timeout() -> void:
 	_can_shoot = true
+
+
+# Interaction on required objective
+func _on_Objectives_interact() -> void:
+	$CameraAnimation.play("Camera_Shake")
+
+
+func _on_UpdateArrow_timeout() -> void:
+#	update_arrow_direction()
+	pass

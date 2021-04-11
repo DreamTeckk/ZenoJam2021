@@ -33,6 +33,8 @@ var objectives_dictionary = {
 	}, 
 }
 
+signal interact
+
 func _ready() -> void:
 	objective_scene = load(objective_scene_path)
 	objective_spawn_points = self.get_children()
@@ -78,3 +80,6 @@ func populate_objectives() -> void:
 
 func get_objective_by_id(id: int) -> Objective:
 	return objectives_list[id]
+
+func interact_success() -> void:
+	emit_signal("interact")
