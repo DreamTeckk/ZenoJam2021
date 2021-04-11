@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export(float) var speed := 150.0
-export(float) var max_health := 50.0
+export(float) var max_health := 10.0
 export(float) var damage := 10.0
 export(float) var attack_cooldown := 1.0 
 var health := max_health
@@ -21,6 +21,7 @@ var on_player := false
 func _ready() -> void:
 	set_process(false)
 	attack_cooldown_timer.wait_time = attack_cooldown
+	$AnimationPlayer.play("Ennemy_Run")
 	
 func _process(delta: float) -> void:
 	move()
@@ -35,8 +36,11 @@ func move() -> void:
 	path_recalculated = false
 	if path.size() > 1:
 		velocity = global_position.direction_to(path[1]) * speed
-		$Sprite.rotation = lerp_angle(rotation, global_position.direction_to(path[1]).angle(), 0.1)
 		move_and_slide(velocity)
+		if velocity.x < 0:
+			$Sprite.flip_h = true
+		else:
+			$Sprite.flip_h = false
 
 func _on_CollisionArea_body_entered(body: Node) -> void:
 	if body.is_in_group("Projectils"):

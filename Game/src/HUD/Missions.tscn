@@ -28,7 +28,6 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="MissionsContainer/VBoxContainer"]
 margin_right = 242.0
 margin_bottom = 14.0
-text = "Missions (99/99) :"
 __meta__ = {
 "_edit_use_anchors_": false
 }

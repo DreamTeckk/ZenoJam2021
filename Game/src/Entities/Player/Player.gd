@@ -5,6 +5,9 @@ var _velocity := Vector2.ZERO
 var _dead := false
 var _can_shoot := true
 var _interactable : Objective = null
+var _weapon_direction = Weapon_Direction.EAST
+
+enum Weapon_Direction {WEST, EAST}
 
 export(float) var max_health := 100.0
 export(float) var speed := 300.0
@@ -27,6 +30,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("fire"):
 			if _can_shoot:
 				_fire()
+		if Input.is_action_just_pressed("interacte"): 
+			if _interactable != null:
+				emit_signal("interact", _interactable.objective_id)
+		animate()
 	else:
 		_die()
 	
@@ -35,6 +42,18 @@ func move() -> Vector2:
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
+	
+func animate() -> void:
+	$AnimationPlayer.stop(false)
+	if _velocity == Vector2.ZERO:
+		$AnimationPlayer.play("idle")
+	else:
+		$AnimationPlayer.play("Run")
+	
+	if _weapon_direction == Weapon_Direction.EAST:
+		$Sprite.flip_h = false
+	else:
+		$Sprite.flip_h = true
 
 func get_hit(damage: int): 
 	if !_dead:
@@ -59,15 +78,12 @@ func _input(event: InputEvent) -> void:
 	if direction_aimed != Vector2.ZERO:
 		$Weapon.rotation = direction_aimed.angle()
 		_flip_weapon()
-	
-	# Objectiev interaction
-	if event.is_action_pressed("interacte"): 
-		if _interactable != null:
-			emit_signal("interact", _interactable.objective_id)
 			
 func _fire() -> void:
 	_can_shoot = false
 	
+	$AudioStreamPlayer.play()
+	$Weapon/MusleFlashAnimation.play("Musle_Flash")
 	$ReloadTimer.start(reload_time)
 	
 	var projectil = _projectil_scene.instance()
@@ -97,8 +113,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func _flip_weapon() -> void: 
 	if $Weapon.rotation > deg2rad(90) or $Weapon.rotation < deg2rad(-90):
+		_weapon_direction = Weapon_Direction.WEST
 		$Weapon.flip_v = true
 	else: 
+		_weapon_direction = Weapon_Direction.EAST
 		$Weapon.flip_v = false 
 
 func _on_reload_timer_timeout() -> void:

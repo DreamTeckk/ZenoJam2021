@@ -14,7 +14,7 @@ func _ready() -> void:
 		ennemy.setup(pathfinding, player)
 		
 	mission_manager.setup(objective_manager)
-	mission_manager.register_mission()
+	mission_manager.create_pool(2,2,1)
 
 func _on_Player_interact(objective_id: int) -> void:
 	mission_manager.check_mission_completion_with_objective_id(objective_id)

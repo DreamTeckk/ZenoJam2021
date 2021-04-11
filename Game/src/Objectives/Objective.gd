@@ -8,9 +8,15 @@ var objective_id : int
 var objective_has_timer: bool
 var objective_has_minigame: bool
 var objective_scene_path: String
+var gorup_color: Color
 
 var activable := false
-var simple
+var is_part_of_mission := false setget set_is_part_of_mission
+
+func _draw() -> void:
+	if is_part_of_mission:
+		draw_circle(Vector2.ZERO, $ActivationArea/CollisionShape2D.shape.radius, Color8(255,0,0,128 if activable else 32))
+	
 
 func setup(id: int, on_wall: bool, orientation: int, objective) -> void:
 	self.on_wall = on_wall
@@ -21,24 +27,33 @@ func setup(id: int, on_wall: bool, orientation: int, objective) -> void:
 	self.objective_has_timer = objective.get("Has_timer")
 	self.objective_has_minigame = objective.get("Has_minigame")
 	self.objective_scene_path = objective.get("Scene_path")
-	
-	$DetectionRing.modulate.a = 0.2
+	set_is_part_of_mission(false)
+#
+#	$DetectionRing.modulate.a = 0.2
 	if orientation == 1: 
 		$Activable.rotation = deg2rad(90)
 	elif orientation == 2: 
 		$Activable.rotation = deg2rad(180)
 	elif orientation == 3: 
 		$Activable.rotation = deg2rad(270)
+	
 
 func _on_ActivationArea_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		activable = true
-		$DetectionRing.modulate.a = 1
+#		$DetectionRing.modulate.a = 1
 		body._interactable = self
+		update()
 
 
 func _on_ActivationArea_body_exited(body: Node) -> void:
 	if body.name == "Player":
 		activable = false
-		$DetectionRing.modulate.a = 0.2
+#		$DetectionRing.modulate.a = 0.2
 		body._interactable = null
+		update()
+		
+func set_is_part_of_mission(value: bool) -> void:
+	is_part_of_mission = value
+	update()
+

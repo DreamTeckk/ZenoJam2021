@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var _direction_angle := 0.0
 var damage := 2.0
-export(int) var speed := 400
+export(float) var speed := 600
 
 func _ready() -> void:
 	self.set_physics_process(false)
@@ -18,5 +18,5 @@ func setup(origin: Vector2, fire_angle: float) -> void:
 	self.set_physics_process(true)
 	
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body.name == "MapWalls":
+	if body.name == "Walls":
 		self.queue_free()

@@ -1,11 +1,33 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/Ennemy.png" type="Texture" id=1]
 [ext_resource path="res://src/Entities/Ennemies/Ennemy.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/health_bar.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.96915, 8.9583 )
+[sub_resource type="CircleShape2D" id=4]
+radius = 17.1102
+
+[sub_resource type="Animation" id=2]
+resource_name = "Ennemy_Run"
+length = 0.375
+loop = true
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 9.32925
+height = 0.40633
 
 [node name="Ennemy" type="KinematicBody2D" groups=[
 "Ennemies",
@@ -18,13 +40,14 @@ script = ExtResource( 2 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 3 )]
 margin_left = -21.9671
-margin_top = -16.1326
+margin_top = -24.1326
 margin_right = -21.9671
-margin_bottom = -16.1326
+margin_bottom = -24.1326
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
+hframes = 5
+frame = 2
 
 [node name="CollisionArea" type="Area2D" parent="."]
 scale = Vector2( 0.75, 0.75 )
@@ -34,15 +57,16 @@ collision_mask = 3
 [node name="CollisionBox" type="CollisionShape2D" parent="CollisionArea"]
 modulate = Color( 0.784314, 0.133333, 0.133333, 1 )
 scale = Vector2( 1.33333, 1.33333 )
-shape = SubResource( 1 )
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-modulate = Color( 0.721569, 0.227451, 0.839216, 1 )
-scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Ennemy_Run = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]
 [connection signal="body_exited" from="CollisionArea" to="." method="_on_CollisionArea_body_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
