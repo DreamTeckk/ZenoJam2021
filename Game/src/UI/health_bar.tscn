@@ -9,16 +9,19 @@ __meta__ = {
 }
 
 [node name="background" type="ColorRect" parent="."]
-margin_right = 45.0
+modulate = Color( 1, 1, 1, 0.552941 )
+margin_right = 23.0
 margin_bottom = 3.0
+mouse_filter = 2
 color = Color( 0.403922, 0.0117647, 0.0117647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="foreground" type="ColorRect" parent="."]
-margin_right = 45.0
+margin_right = 23.0
 margin_bottom = 3.0
+mouse_filter = 2
 color = Color( 0.0117647, 0.403922, 0.0196078, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

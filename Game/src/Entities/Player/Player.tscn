@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/sounds/Interact.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/Run.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=7]
 resource_name = "Musle_Flash"
 length = 0.1
 step = 0.02
@@ -26,13 +26,13 @@ tracks/0/keys = {
 "values": [ 0.0, 10.0, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12.0467, 4.20392 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 12.0467, 10.4293 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 12.0161, 12.0456 )
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12.0161, 22.3106 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 length = 0.36
 loop = true
 step = 0.06
@@ -118,7 +118,7 @@ color = Color( 0.584314, 0.870588, 0.862745, 1 )
 energy = 0.0
 
 [node name="MusleFlashAnimation" type="AnimationPlayer" parent="Weapon"]
-anims/Musle_Flash = SubResource( 1 )
+anims/Musle_Flash = SubResource( 7 )
 
 [node name="PathIndicator" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -126,8 +126,8 @@ texture = ExtResource( 6 )
 offset = Vector2( 70, 0 )
 
 [node name="Foot" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 7.7513 )
-shape = SubResource( 2 )
+position = Vector2( 0, 13.7513 )
+shape = SubResource( 8 )
 
 [node name="BodyArea" type="Area2D" parent="."]
 position = Vector2( 0, -2.31508 )
@@ -136,8 +136,8 @@ scale = Vector2( 1, -1 )
 collision_mask = 128
 
 [node name="BodyCollision" type="CollisionShape2D" parent="BodyArea"]
-position = Vector2( -5.86915e-06, 2.31508 )
-shape = SubResource( 3 )
+position = Vector2( -1.09395e-05, 4.31508 )
+shape = SubResource( 9 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, -13.0888 )
@@ -160,7 +160,7 @@ autostart = true
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Run = SubResource( 4 )
+anims/Run = SubResource( 10 )
 anims/idle = SubResource( 5 )
 
 [node name="WeaponAnimation" type="AnimationPlayer" parent="."]

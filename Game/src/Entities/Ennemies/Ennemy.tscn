@@ -39,10 +39,12 @@ collision/safe_margin = 1.0
 script = ExtResource( 2 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 3 )]
-margin_left = -21.9671
-margin_top = -24.1326
-margin_right = -21.9671
-margin_bottom = -24.1326
+modulate = Color( 1, 1, 1, 0.486275 )
+margin_left = -11.6661
+margin_top = 7.91509
+margin_right = -11.6661
+margin_bottom = 7.91509
+mouse_filter = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
