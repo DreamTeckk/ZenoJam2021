@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Difficulty_Meter_Shape.png-9ae195535972504d8cf2f7ac47a1b53f.stex"
+path="res://.import/Lifebar_Cover_Shape.png-aa37cc1f40b880c394d9bbc892e0ce7f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/Difficulty_Meter_Shape.png"
-dest_files=[ "res://.import/Difficulty_Meter_Shape.png-9ae195535972504d8cf2f7ac47a1b53f.stex" ]
+source_file="res://assets/ui/Lifebar_Cover_Shape.png"
+dest_files=[ "res://.import/Lifebar_Cover_Shape.png-aa37cc1f40b880c394d9bbc892e0ce7f.stex" ]
 
 [params]
 

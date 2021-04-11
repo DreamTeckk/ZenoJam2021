@@ -2,28 +2,19 @@
 
 [ext_resource path="res://src/Missions/Mission.gd" type="Script" id=1]
 
-[node name="SingleMission" type="Control"]
+[node name="SingleMission" type="VBoxContainer"]
+margin_bottom = 24.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 objective_ui_scene_path = "res://src/HUD/SingleMissionObjective.tscn"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 136.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainMission" type="Control" parent="VBoxContainer"]
-margin_right = 136.0
+[node name="MainMission" type="Control" parent="."]
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/MainMission"]
+[node name="CheckBox" type="CheckBox" parent="MainMission"]
 margin_right = 24.0
 margin_bottom = 24.0
 disabled = true
@@ -31,7 +22,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionTitle" type="Label" parent="VBoxContainer/MainMission"]
+[node name="MissionTitle" type="Label" parent="MainMission"]
 margin_left = 28.0
 margin_top = 5.0
 margin_right = 28.0

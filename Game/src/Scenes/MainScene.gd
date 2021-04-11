@@ -35,7 +35,6 @@ func _on_DifficultyIncreaser_timeout() -> void:
 	# Increase level of dificulty
 	difficulty += 1
 	$HUD/Interface/DifficultyMetter/Level.text = str(difficulty)
-	print_debug("diff increased : " + str(difficulty))
 	for ennemy in $Map/YSort/Ennemies.get_children():
 		ennemy.upgrade(difficulty)
 	pass

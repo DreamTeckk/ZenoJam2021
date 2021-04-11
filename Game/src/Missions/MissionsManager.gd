@@ -1,4 +1,4 @@
-extends Node
+extends PanelContainer
 
 class_name MissionsManager
 
@@ -9,6 +9,10 @@ var mission_pool_completed := 0
 var missions_pool := []
 var objectives_manager
 onready var mission_ui_scene = load("res://src/HUD/SingleMission.tscn")
+
+func _process(delta: float) -> void:
+	self.rect_min_size.y = 0
+	self.rect_size.y = 0
 
 func setup(objectives_manager) -> void:
 	self.objectives_manager = objectives_manager
@@ -21,6 +25,7 @@ func check_mission_completion_with_objective_id(id: int) -> void:
 			if mission.objectives_id_completed.size() >= mission.objectives_id_to_complete.size():
 				missions_completed += 1
 				mission_pool_completed += 1
+				$VBoxContainer/Label.text = "Missions (" + str(missions_completed) + "/" + str(missions_total) + ") :"				
 				if mission_pool_completed >= mission_to_complete:
 					complete_pool()
 
@@ -29,7 +34,7 @@ func register_mission(obj_nbr: int) -> Mission:
 	if new_objectives.size() <= 0:
 		return null 
 	var new_mission : Mission = mission_ui_scene.instance()
-	$MissionsContainer/VBoxContainer/MissionsList.add_child(new_mission)
+	$VBoxContainer/MissionsList.add_child(new_mission)
 	new_mission.setup("test mission " + str(randi() % 99) + " : ", new_objectives, objectives_manager)
 	return new_mission
 	
@@ -41,20 +46,17 @@ func create_pool(min_nbr: int, max_nbr: int, obj_nbr: int) -> void:
 	else:
 		nbr = randi() % max_nbr + min_nbr
 	missions_pool = []
-	$MissionsContainer.rect_size.y = 0
 	var missions_added = 0
 	for i in range(nbr):
 		var new_mission = register_mission(obj_nbr)
 		if new_mission == null:
-			return
+			continue
 		missions_added += 1
 		missions_pool.append(new_mission)
-#		print_debug($MissionsContainer/VBoxContainer/MissionsList.get_child(i).rect_size.y)
-		$MissionsContainer.rect_size.y += $MissionsContainer/VBoxContainer/MissionsList.get_child(i).rect_size.y
 	missions_total += missions_added
 	mission_to_complete = missions_added
 	mission_pool_completed = 0
-	$MissionsContainer/VBoxContainer/Label.text = "Missions (" + str(missions_completed) + "/" + str(missions_total) + ") :"
+	$VBoxContainer/Label.text = "Missions (" + str(missions_completed) + "/" + str(missions_total) + ") :"
 	
 func complete_pool() -> void:
 	for mission in missions_pool:

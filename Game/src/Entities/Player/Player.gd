@@ -112,7 +112,6 @@ func get_hit(damage: int):
 		$RecoverTimer.stop()
 		$RecoverTimer.start()
 		health = clamp(health - damage, 0, max_health)
-		print_debug("Remaining health : " + str(health))
 		if health == 0: 
 			_dead = true
 
@@ -134,7 +133,10 @@ func _input(event: InputEvent) -> void:
 		$Weapon.rotation = direction_aimed.angle()
 		_flip_weapon()
 			
-
+	if event is InputEventMouse:
+		$Weapon.rotation = get_local_mouse_position().angle()
+		_flip_weapon()
+	
 func _fire() -> void:
 	_can_shoot = false
 	
@@ -163,11 +165,7 @@ func _fire() -> void:
 	base_node.add_child(projectil)
 	projectil.setup($Weapon/Cannon.global_position, $Weapon.rotation)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouse:
-		$Weapon.rotation = get_local_mouse_position().angle()
-		_flip_weapon()
-		
+
 func _flip_weapon() -> void: 
 	if $Weapon.rotation > deg2rad(90) or $Weapon.rotation < deg2rad(-90):
 		_weapon_direction = Weapon_Direction.WEST

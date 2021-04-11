@@ -1,4 +1,4 @@
-extends Control
+extends VBoxContainer
 
 class_name Mission
 
@@ -13,19 +13,15 @@ func setup(mission_name: String, objectives_id: Array, objective_manager) -> voi
 	self.mission_name = mission_name
 	self.objectives_id_to_complete = objectives_id
 	self.objective_manager = objective_manager
-	$VBoxContainer/MainMission/MissionTitle.text = mission_name
-	self.rect_size.y = 38
+	$MainMission/MissionTitle.text = mission_name
 	
 	for i in objectives_id_to_complete.size():
 		var objective_ui_scene = load(objective_ui_scene_path).instance()
-		$VBoxContainer.add_child(objective_ui_scene)
-		self.rect_size.y += $VBoxContainer.get_child(i + 1).rect_size.y
-		objective_ui_scene.get_node("Label").text = "Objective " + str(objectives_id_to_complete[i])
+		add_child(objective_ui_scene)
+		objective_ui_scene.get_node("Label").text = "RepaireRepaire Repaire Repaire Repaire Repaire Repaire the super-charger conductor amiotopique"
 		
 		var objective : Objective = objective_manager.get_objective_by_id(objectives_id_to_complete[i])
 		objective.is_part_of_mission = true
-		
-	self.rect_min_size.y = self.rect_size.y
 
 	
 func completed_objective(id: int) -> void:
@@ -34,10 +30,10 @@ func completed_objective(id: int) -> void:
 		var objective : Objective = objective_manager.get_objective_by_id(id)
 		objective.is_part_of_mission = false
 		objectives_id_completed.append(id)
-		var cb : CheckBox = $VBoxContainer.get_child(index + 1).get_node("CheckBox")
+		var cb : CheckBox = get_child(index + 1).get_node("CheckBox")
 		cb.pressed = true
 		if objectives_id_completed.size() >= objectives_id_to_complete.size():
-			$VBoxContainer/MainMission/CheckBox.pressed = true
+			$MainMission/CheckBox.pressed = true
 			completed = true
 
 

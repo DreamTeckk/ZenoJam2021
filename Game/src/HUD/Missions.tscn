@@ -1,43 +1,40 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Missions/MissionsManager.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/Theme/default_theme.tres" type="Theme" id=2]
 
-[node name="Missions" type="Control"]
-margin_right = 232.0
-margin_bottom = 40.0
+[node name="Missions" type="PanelContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 37.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionsContainer" type="PanelContainer" parent="."]
-modulate = Color( 1, 1, 1, 0.647059 )
-margin_right = 256.0
-margin_bottom = 32.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MissionsContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 249.0
-margin_bottom = 25.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 27.0
 mouse_filter = 2
+theme = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="MissionsContainer/VBoxContainer"]
-margin_right = 242.0
-margin_bottom = 14.0
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_bottom = 15.0
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MissionsList" type="VBoxContainer" parent="MissionsContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 242.0
-margin_bottom = 18.0
+[node name="MissionsList" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 25.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
