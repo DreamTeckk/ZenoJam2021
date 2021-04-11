@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Player.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/sounds/Gun_Shoot_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/lights/32xlight.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/Path_indicator.png" type="Texture" id=6]
+[ext_resource path="res://assets/sounds/Interact.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/Run.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Musle_Flash"
@@ -64,6 +66,23 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "Weapon_Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 0.378929 ),
+"update": 0,
+"values": [ Vector2( -10, 0 ), Vector2( -5, 0 ), Vector2( -10, 0 ) ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 light_mask = 4
 collision_mask = 8224
@@ -72,11 +91,12 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 10
+frame = 6
 
 [node name="Weapon" type="Sprite" parent="."]
 scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
-offset = Vector2( -2, 0 )
+offset = Vector2( -10, 0 )
 flip_h = true
 
 [node name="Cannon" type="Node2D" parent="Weapon"]
@@ -100,6 +120,11 @@ energy = 0.0
 [node name="MusleFlashAnimation" type="AnimationPlayer" parent="Weapon"]
 anims/Musle_Flash = SubResource( 1 )
 
+[node name="PathIndicator" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+offset = Vector2( 70, 0 )
+
 [node name="Foot" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7.7513 )
 shape = SubResource( 2 )
@@ -114,17 +139,6 @@ collision_mask = 128
 position = Vector2( -5.86915e-06, 2.31508 )
 shape = SubResource( 3 )
 
-[node name="ReloadTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Run = SubResource( 4 )
-anims/idle = SubResource( 5 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-volume_db = -10.0
-
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, -13.0888 )
 texture = ExtResource( 5 )
@@ -135,7 +149,33 @@ shadow_enabled = true
 shadow_buffer_size = 512
 shadow_item_cull_mask = -2147483645
 
-[node name="PathIndicator" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
-offset = Vector2( 70, 0 )
+[node name="RecoverTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="HealingTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Run = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="."]
+anims/Weapon_Shoot = SubResource( 6 )
+
+[node name="WeaponShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="InteractSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="RunSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+pitch_scale = 0.7
+[connection signal="timeout" from="RecoverTimer" to="." method="_on_RecoverTimer_timeout"]
+[connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]

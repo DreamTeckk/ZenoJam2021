@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Entities/Ennemies/Ennemy.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/health_bar.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 17.1102
 
 [sub_resource type="Animation" id=2]
@@ -57,7 +57,7 @@ collision_mask = 3
 [node name="CollisionBox" type="CollisionShape2D" parent="CollisionArea"]
 modulate = Color( 0.784314, 0.133333, 0.133333, 1 )
 scale = Vector2( 1.33333, 1.33333 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true

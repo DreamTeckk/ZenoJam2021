@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/objectif_detection_ring.png-cac5f801b7e94980bb63285ca1d32577.stex"
+path="res://.import/Lifebar_Shape.png-3ae0b5772b0067bc12e4299b5c19d1f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objectif_detection_ring.png"
-dest_files=[ "res://.import/objectif_detection_ring.png-cac5f801b7e94980bb63285ca1d32577.stex" ]
+source_file="res://assets/ui/Lifebar_Shape.png"
+dest_files=[ "res://.import/Lifebar_Shape.png-3ae0b5772b0067bc12e4299b5c19d1f1.stex" ]
 
 [params]
 

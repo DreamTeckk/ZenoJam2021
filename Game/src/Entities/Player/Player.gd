@@ -9,6 +9,7 @@ var _weapon_direction = Weapon_Direction.EAST
 var pathfinding : Pathfinding
 var mission_manager
 var objective_manager
+var can_heal := true
 
 enum Weapon_Direction {WEST, EAST}
 
@@ -17,6 +18,8 @@ export(float) var speed := 300.0
 export(float) var health := max_health
 export(String) var world_node_name
 export(float) var reload_time := 0.1
+export(int) var healing_rate := 2
+export(float) var healing_speed := 1
 
 onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
@@ -44,6 +47,8 @@ func setup(pathfinding: Pathfinding, mission_manager, objective_manager) -> void
 func _physics_process(delta: float) -> void:
 	if !_dead:
 		_velocity = self.move_and_slide(move().normalized() * speed)
+		if _velocity != Vector2.ZERO and !$RunSound.playing:
+			$RunSound.play()
 		if Input.is_action_pressed("fire"):
 			if _can_shoot:
 				_fire()
@@ -57,12 +62,14 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	update_arrow_direction()
 
+
 func update_arrow_direction() -> void:
 #	var path = pathfinding.get_new_path(global_position, get_nearest_objective())
 #	if path.size() > 1:
 #		$PathIndicator.look_at(path[1])
 	$PathIndicator.look_at(get_nearest_objective())	
-	
+
+
 func get_nearest_objective() -> Vector2:
 	var missions = mission_manager.missions_pool
 	var nearest_distance = INF
@@ -84,7 +91,8 @@ func move() -> Vector2:
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
-	
+
+
 func animate() -> void:
 	$AnimationPlayer.stop(false)
 	if _velocity == Vector2.ZERO:
@@ -97,20 +105,25 @@ func animate() -> void:
 	else:
 		$Sprite.flip_h = true
 
-func get_hit(damage: int): 
+
+func get_hit(damage: int):
 	if !_dead:
+		$HealingTimer.stop()
+		$RecoverTimer.stop()
+		$RecoverTimer.start()
 		health = clamp(health - damage, 0, max_health)
 		print_debug("Remaining health : " + str(health))
 		if health == 0: 
 			_dead = true
-		emit_signal("take_hit", max_health, health)
-	
+
+
 func _die():
 	set_physics_process(false)
 	set_process_input(false)
 	set_process_unhandled_input(false)
 	print_debug("You died !")
 	emit_signal("died")
+
 
 func _input(event: InputEvent) -> void:
 	var direction_aimed: = Vector2(
@@ -121,10 +134,12 @@ func _input(event: InputEvent) -> void:
 		$Weapon.rotation = direction_aimed.angle()
 		_flip_weapon()
 			
+
 func _fire() -> void:
 	_can_shoot = false
 	
-	$AudioStreamPlayer.play()
+	$WeaponShootSound.play()
+	$WeaponAnimation.play("Weapon_Shoot")
 	$Weapon/MusleFlashAnimation.play("Musle_Flash")
 	$ReloadTimer.start(reload_time)
 	
@@ -167,9 +182,12 @@ func _on_reload_timer_timeout() -> void:
 
 # Interaction on required objective
 func _on_Objectives_interact() -> void:
+	$InteractSound.play()
 	$CameraAnimation.play("Camera_Shake")
 
 
-func _on_UpdateArrow_timeout() -> void:
-#	update_arrow_direction()
-	pass
+func _on_RecoverTimer_timeout() -> void:
+	$HealingTimer.start(healing_speed)
+
+func _on_HealingTimer_timeout() -> void:
+	health = clamp(health + healing_rate, 0, max_health)

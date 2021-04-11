@@ -1,9 +1,15 @@
 extends KinematicBody2D
 
-export(float) var speed := 150.0
-export(float) var max_health := 10.0
-export(float) var damage := 10.0
+export(int) var speed := 100
+export(int) var max_health := 20
+export(int) var damage := 5
 export(float) var attack_cooldown := 1.0 
+
+export(int) var speed_per_level := 25
+export(int) var max_health_per_level := 5
+export(int) var damage_per_level := 2
+export(int) var attack_cooldown_per_level := 0.025
+
 var health := max_health
 var velocity := Vector2.ZERO
 var can_attack := true
@@ -26,9 +32,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	move()
 
-func setup(pathfinding: Pathfinding, player: Player) -> void:
+func setup(pathfinding: Pathfinding, player: Player, difficulty_level: int) -> void:
 	self.pathfinding = pathfinding
 	self.player = player
+	
+	speed += speed_per_level * difficulty_level
+	max_health += max_health_per_level * difficulty_level
+	damage += damage_per_level * difficulty_level
+	attack_cooldown += attack_cooldown_per_level * difficulty_level 
+	
 	set_process(true)
 	
 func move() -> void:
@@ -67,4 +79,11 @@ func _on_AttackCooldown_timeout() -> void:
 		attack_cooldown_timer.start()
 		player.get_hit(damage)
 	can_attack = true
+
+func upgrade(difficulty_level: int) -> void:
+	speed = speed_per_level * difficulty_level + speed / difficulty_level 
+	max_health = max_health_per_level * difficulty_level + max_health / difficulty_level
+	damage = damage_per_level * difficulty_level + damage / difficulty_level
+	attack_cooldown -= attack_cooldown_per_level * difficulty_level
 	
+	$HealthBar.update_health(max_health, health)
