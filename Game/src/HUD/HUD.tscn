@@ -112,7 +112,6 @@ __meta__ = {
 [node name="LifeBar" type="TextureProgress" parent="Interface/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 24.0
-step = 1.0
 value = 80.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 3 )

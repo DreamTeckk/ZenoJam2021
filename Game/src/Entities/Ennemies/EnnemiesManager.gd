@@ -60,3 +60,9 @@ func _on_EnnemySpawnEscapeTimer_timeout() -> void:
 		ennemy.setup(pathfinding, player, difficulty_level, spawn_queu[0])
 		spawn_queu.remove(0)
 	
+func switch_off() -> void:
+	spawn_queu.empty()
+	$EnnemyRespawnTimer.stop()
+	$EnnemySpawnEscapeTimer.stop()
+	for ennemy in $EnnemyAgents.get_children():
+		ennemy.switch_off()

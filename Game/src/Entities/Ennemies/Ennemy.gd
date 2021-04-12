@@ -94,4 +94,9 @@ func upgrade() -> void:
 	
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
+	
+func switch_off() -> void:
+	set_process(false)
+	set_physics_process(false)
+	print_debug("ennemy off")
 

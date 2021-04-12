@@ -21,7 +21,7 @@ export(int) var health := max_health
 export(int) var damage := 5
 export(float) var projectil_speed := 400
 export(String) var world_node_name
-export(float) var reload_time := 1.5
+export(float) var reload_time := 1.2
 export(int) var healing_rate := 2
 export(float) var healing_speed := 2
 
@@ -40,7 +40,6 @@ var healing_speed_per_level := 0.2
 onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
 signal take_hit
-signal died
 signal interact
 
 func _ready() -> void:
@@ -136,9 +135,6 @@ func _die():
 	set_physics_process(false)
 	set_process_input(false)
 	set_process_unhandled_input(false)
-	print_debug("You died !")
-	emit_signal("died")
-
 
 func _input(event: InputEvent) -> void:
 	var direction_aimed: = Vector2(
