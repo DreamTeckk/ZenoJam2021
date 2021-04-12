@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-export(int) var speed := 100
+export(int) var speed := 150
 export(int) var max_health := 20
 export(int) var damage := 5
 export(float) var attack_cooldown := 1.0 
 
-export(int) var speed_per_level := 25
+export(int) var speed_per_level := 15
 export(int) var max_health_per_level := 5
 export(int) var damage_per_level := 2
 export(int) var attack_cooldown_per_level := 0.025
@@ -30,16 +30,21 @@ func _ready() -> void:
 	$AnimationPlayer.play("Ennemy_Run")
 	
 func _process(delta: float) -> void:
-	move()
+	call_deferred("move")
 
-func setup(pathfinding: Pathfinding, player: Player, difficulty_level: int) -> void:
+func setup(pathfinding: Pathfinding, player: Player, difficulty_level: int, spawn_point: Vector2) -> void:
 	self.pathfinding = pathfinding
 	self.player = player
 	
-	speed += speed_per_level * difficulty_level
-	max_health += max_health_per_level * difficulty_level
-	damage += damage_per_level * difficulty_level
-	attack_cooldown += attack_cooldown_per_level * difficulty_level 
+	global_position = spawn_point
+	
+	speed += speed_per_level * (difficulty_level - 1)
+	max_health += max_health_per_level * (difficulty_level - 1)
+	damage += damage_per_level * (difficulty_level - 1)
+	attack_cooldown += attack_cooldown_per_level * (difficulty_level - 1) 
+	
+	$HealthBar.max_value = max_health
+	$HealthBar.value = health
 	
 	set_process(true)
 	
@@ -57,8 +62,9 @@ func move() -> void:
 func _on_CollisionArea_body_entered(body: Node) -> void:
 	if body.is_in_group("Projectils"):
 		health -= body.damage
+		$HealthBar.max_value = max_health
+		$HealthBar.value = health
 		body.queue_free()
-		$HealthBar.update_health(max_health, health)
 		if health <= 0.0:
 			self.queue_free()
 	if body is Player:
@@ -80,10 +86,12 @@ func _on_AttackCooldown_timeout() -> void:
 		player.get_hit(damage)
 	can_attack = true
 
-func upgrade(difficulty_level: int) -> void:
-	speed = speed_per_level * difficulty_level + speed / difficulty_level 
-	max_health = max_health_per_level * difficulty_level + max_health / difficulty_level
-	damage = damage_per_level * difficulty_level + damage / difficulty_level
-	attack_cooldown -= attack_cooldown_per_level * difficulty_level
+func upgrade() -> void:
+	speed += speed_per_level
+	max_health = max_health_per_level
+	damage = damage_per_level
+	attack_cooldown -= attack_cooldown_per_level
 	
-	$HealthBar.update_health(max_health, health)
+	$HealthBar.max_value = max_health
+	$HealthBar.value = health
+

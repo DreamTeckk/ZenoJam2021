@@ -51,6 +51,8 @@ func set_is_part_of_mission(value: bool) -> void:
 	is_part_of_mission = value
 	if is_part_of_mission:
 		$Light2D.show()
+		$Activable.flip_h = false
 	else:
 		$Light2D.hide()
+		$Activable.flip_h = true
 

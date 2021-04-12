@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Difficulty_up.wav-9c04b08614d988ece604b4fdd81820a5.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Difficulty_up.wav"
+dest_files=[ "res://.import/Difficulty_up.wav-9c04b08614d988ece604b4fdd81820a5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

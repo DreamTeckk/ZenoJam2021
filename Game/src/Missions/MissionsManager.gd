@@ -8,6 +8,7 @@ var mission_to_complete := 0
 var mission_pool_completed := 0
 var missions_pool := []
 var objectives_manager
+var player: Player setget set_player
 onready var mission_ui_scene = load("res://src/HUD/SingleMission.tscn")
 
 func _process(delta: float) -> void:
@@ -29,26 +30,35 @@ func check_mission_completion_with_objective_id(id: int) -> void:
 				if mission_pool_completed >= mission_to_complete:
 					complete_pool()
 
-func register_mission(obj_nbr: int) -> Mission:
+func register_mission(obj_nbr: int, index: int) -> Mission:
 	var new_objectives = take_random_objectives(obj_nbr)
 	if new_objectives.size() <= 0:
 		return null 
 	var new_mission : Mission = mission_ui_scene.instance()
 	$VBoxContainer/MissionsList.add_child(new_mission)
-	new_mission.setup("test mission " + str(randi() % 99) + " : ", new_objectives, objectives_manager)
+	new_mission.setup("Mission n° " + str(missions_completed + index) + " : ", new_objectives, objectives_manager)
 	return new_mission
 	
-func create_pool(min_nbr: int, max_nbr: int, obj_nbr: int) -> void:
+func create_pool(min_nbr: int, max_nbr: int, obj_nbr_min: int, obj_nbr_max: int) -> void:
 	randomize()
 	var nbr := 0
+	var obj_nbr := 0
+	
 	if min_nbr == max_nbr:
 		nbr = min_nbr
 	else:
 		nbr = randi() % max_nbr + min_nbr
+		
+	if obj_nbr_min == obj_nbr_max:
+		obj_nbr = obj_nbr_min
+	else:
+		obj_nbr = randi() % obj_nbr_max + obj_nbr_min
+	
+	
 	missions_pool = []
 	var missions_added = 0
 	for i in range(nbr):
-		var new_mission = register_mission(obj_nbr)
+		var new_mission = register_mission(obj_nbr, i+1)
 		if new_mission == null:
 			continue
 		missions_added += 1
@@ -61,8 +71,16 @@ func create_pool(min_nbr: int, max_nbr: int, obj_nbr: int) -> void:
 func complete_pool() -> void:
 	for mission in missions_pool:
 		mission.erase()
-	create_pool(2,2,3)
+	if player:
+		player.upgrade_random_skill()
 	
+	randomize()
+	if randi() % 2:
+		create_pool(1,2,1,3)
+	else:
+		create_pool(2,3,1,2)
+		
+
 
 func take_random_objectives(nbr: int) -> Array:
 	var objectives : Array = objectives_manager.objectives_list
@@ -85,3 +103,6 @@ func take_random_objectives(nbr: int) -> Array:
 		available_objectives.remove(random)
 	
 	return returned_objectives
+
+func set_player(value: Player) -> void:
+	player = value

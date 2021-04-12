@@ -13,7 +13,6 @@ __meta__ = {
 }
 
 [node name="Interface" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -113,7 +112,8 @@ __meta__ = {
 [node name="LifeBar" type="TextureProgress" parent="Interface/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 24.0
-value = 75.0
+step = 1.0
+value = 80.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 3 )
 tint_under = Color( 0.137255, 0.129412, 0.184314, 0.572549 )

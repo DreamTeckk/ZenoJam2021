@@ -9,16 +9,12 @@ extents = Vector2( 8, 8 )
 [node name="Projectil" type="KinematicBody2D" groups=[
 "Projectils",
 ]]
+light_mask = 0
+z_index = 100
+z_as_relative = false
 collision_layer = 2
-collision_mask = 8320
+collision_mask = 128
 script = ExtResource( 2 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, -0.0417137 )
-texture = ExtResource( 3 )
-texture_scale = 0.25
-color = Color( 0.47451, 0.933333, 0.945098, 1 )
-energy = 10.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -2.98023e-08, -2.98023e-08 )
@@ -32,4 +28,25 @@ collision_mask = 8322
 
 [node name="BodyCollider" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+color = Color( 0.196078, 0.768627, 0.796078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+light_mask = 524288
+position = Vector2( 0, -0.0417137 )
+z_index = 9
+z_as_relative = false
+texture = ExtResource( 3 )
+texture_scale = 0.25
+color = Color( 0.47451, 0.933333, 0.945098, 1 )
+energy = 10.0
+shadow_item_cull_mask = 524288
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

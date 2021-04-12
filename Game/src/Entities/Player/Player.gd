@@ -11,15 +11,31 @@ var mission_manager
 var objective_manager
 var can_heal := true
 
+enum Upgrade_Skill {MAX_HEALTH, SPEED, DAMAGE, PROJ_SPEED, RELOAD_TIME, HEAL_RATE, HEAL_SPEED}
+
 enum Weapon_Direction {WEST, EAST}
 
-export(float) var max_health := 100.0
-export(float) var speed := 300.0
-export(float) var health := max_health
+export(int) var max_health := 100
+export(int) var speed := 300
+export(int) var health := max_health
+export(int) var damage := 5
+export(float) var projectil_speed := 400
 export(String) var world_node_name
-export(float) var reload_time := 0.1
+export(float) var reload_time := 1.5
 export(int) var healing_rate := 2
-export(float) var healing_speed := 1
+export(float) var healing_speed := 2
+
+var healing_speed_cap := 0.2
+var projectil_speed_cap := 2000
+var reload_time_cap := 0.05
+
+var max_health_per_level := 20
+var speed_per_level := 25
+var damage_per_level := 5
+var projectil_speed_per_level := 50
+var reload_time_per_level := 0.1
+var healing_rate_per_level := 4
+var healing_speed_per_level := 0.2
 
 onready var _projectil_scene = load("res://src/Entities/Weapons/Projectil.tscn")
 
@@ -163,7 +179,7 @@ func _fire() -> void:
 		return
 		
 	base_node.add_child(projectil)
-	projectil.setup($Weapon/Cannon.global_position, $Weapon.rotation)
+	projectil.setup($Weapon/Cannon.global_position, $Weapon.rotation, damage, projectil_speed)
 
 
 func _flip_weapon() -> void: 
@@ -189,3 +205,50 @@ func _on_RecoverTimer_timeout() -> void:
 
 func _on_HealingTimer_timeout() -> void:
 	health = clamp(health + healing_rate, 0, max_health)
+
+func upgrade_random_skill() -> void:
+	randomize()
+	var random_skill := randi() % Upgrade_Skill.size()
+	var text : String
+	match random_skill:
+		Upgrade_Skill.DAMAGE:
+			damage += damage_per_level
+			text = "Damages : +" + str(damage_per_level)
+		Upgrade_Skill.HEAL_RATE:
+			healing_rate += healing_rate_per_level
+			text = "Healing Rate : +" + str(healing_rate_per_level)
+		Upgrade_Skill.HEAL_SPEED:
+			if healing_speed <= healing_speed_cap:
+				upgrade_random_skill()
+			else:
+				healing_speed = clamp(healing_speed - healing_speed_per_level, healing_speed_cap, INF)
+				text = "Healing Speed : heal every " + str(clamp(healing_speed - healing_speed_per_level, healing_speed_cap, INF)) + "sec"
+		Upgrade_Skill.MAX_HEALTH:
+			print_debug("Upgrade MAX HEALTH")
+			if health == max_health:
+				health = max_health + max_health_per_level
+			max_health += max_health_per_level
+			text = "Max Health : +" + str(max_health_per_level) + "hp"
+		Upgrade_Skill.PROJ_SPEED:
+			if projectil_speed >= projectil_speed_cap:
+				upgrade_random_skill()
+			else:
+				projectil_speed = clamp(projectil_speed + projectil_speed_per_level, 0, projectil_speed_cap)
+				text = "Bullet Speed : +" + str(projectil_speed_per_level)
+		Upgrade_Skill.RELOAD_TIME:
+			if reload_time <= reload_time_cap:
+				upgrade_random_skill()
+			else:
+				reload_time = clamp(reload_time - reload_time_per_level, reload_time_cap, INF) 
+				text = "Reload Time : -" + str(reload_time_per_level) + "sec"
+		Upgrade_Skill.SPEED:
+			speed += speed_per_level
+			text = "Speed : +" + str(speed_per_level)
+	
+	$MissionsCompletedSound.play()
+	$Upgrade.text = text
+	$MissionCompleted/Animation.stop()
+	$MissionCompleted/Animation.play("Missions_Completed")
+	
+	$Upgrade/Animation.stop()
+	$Upgrade/Animation.play("Upgrade")

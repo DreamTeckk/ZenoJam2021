@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/objective.png-ca4a3ec7ca23239604f3aaf54c1f30fe.stex"
+path="res://.import/Lever.png-91a1a10c7926aa41ed38f15b046a876e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objective.png"
-dest_files=[ "res://.import/objective.png-ca4a3ec7ca23239604f3aaf54c1f30fe.stex" ]
+source_file="res://assets/sprites/Lever.png"
+dest_files=[ "res://.import/Lever.png-91a1a10c7926aa41ed38f15b046a876e.stex" ]
 
 [params]
 

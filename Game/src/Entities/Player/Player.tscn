@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Player.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/sprites/Path_indicator.png" type="Texture" id=6]
 [ext_resource path="res://assets/sounds/Interact.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/Run.wav" type="AudioStream" id=8]
+[ext_resource path="res://src/UI/Theme/default_theme.tres" type="Theme" id=9]
+[ext_resource path="res://assets/sounds/Upgrade.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Musle_Flash"
@@ -81,6 +83,39 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 0.378929 ),
 "update": 0,
 "values": [ Vector2( -10, 0 ), Vector2( -5, 0 ), Vector2( -10, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Missions_Completed"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Upgrade"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.1, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -177,5 +212,44 @@ stream = ExtResource( 7 )
 stream = ExtResource( 8 )
 volume_db = -10.0
 pitch_scale = 0.7
+
+[node name="MissionsCompletedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="MissionCompleted" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -133.0
+margin_top = -54.6878
+margin_right = 133.0
+margin_bottom = -39.6878
+rect_pivot_offset = Vector2( 104.5, 4.18776 )
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 0.121569, 0.847059, 0.117647, 1 )
+text = "Missions Completed :"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="MissionCompleted"]
+anims/Missions_Completed = SubResource( 11 )
+
+[node name="Upgrade" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -133.0
+margin_top = -38.6878
+margin_right = 133.0
+margin_bottom = -23.6878
+rect_pivot_offset = Vector2( 104.5, 4.18776 )
+theme = ExtResource( 9 )
+text = "Reload time -0.5s"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="Upgrade"]
+anims/Upgrade = SubResource( 12 )
 [connection signal="timeout" from="RecoverTimer" to="." method="_on_RecoverTimer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_HealingTimer_timeout"]
